@@ -3,7 +3,8 @@ import {View,StyleSheet,TextInput,Text,Animated,TouchableWithoutFeedback} from '
 
 
 
-export const FloatingLabelInput=({backgroundColor})=>{
+export const FloatingLabelInput=({backgroundColor,duration=300,width=250,title='title',ContainerStyle
+,onBlur,onChange,Value,fontSize=18,BorderStyles})=>{
     const fadeAnim = useRef(new Animated.Value(0)).current
     const resizeAnim = useRef(new Animated.Value(0)).current
     const fontAnim = useRef(new Animated.Value(23)).current
@@ -18,7 +19,7 @@ export const FloatingLabelInput=({backgroundColor})=>{
             fadeAnim,
             {
               toValue: -10,
-              duration: 300,
+              duration: duration,
               useNativeDriver: false,
             }
           ).start();
@@ -32,7 +33,7 @@ if(clicked){
         resizeAnim,
         {
           toValue: 50,
-          duration: 300,
+          duration: duration,
           useNativeDriver: false,
         }
       ).start();
@@ -45,7 +46,7 @@ if(clicked){
                 fontAnim,
                 {
                   toValue: 18,
-                  duration: 300,
+                  duration: duration,
                   useNativeDriver: false,
                 }
               ).start();
@@ -53,20 +54,22 @@ if(clicked){
               },[clicked,fontAnim])
 
 
-    return(<View style={{height:60,width:250,backgroundColor:backgroundColor}}>
-        <TouchableWithoutFeedback onPress={()=>{setClicled(true); focRef.focus()}}><View style={{borderWidth:1,height:'100%',width:'100%',borderRadius:4,justifyContent:'center'}}>
-<Animated.View style={{marginTop:fadeAnim,backgroundColor:labelBack,
-            alignSelf:'baseline',marginLeft:15,}}><Animated.Text style={{fontSize:fontAnim,
-    }}>username</Animated.Text></Animated.View>
-<Animated.View style={{height:resizeAnim}}><TextInput style={{fontSize:18}} 
+    return(<View style={[styles.MainContainer,ContainerStyle,{width:width,backgroundColor:backgroundColor}]}>
+        <TouchableWithoutFeedback onPress={()=>{setClicled(true); focRef.focus()}}><View style={[styles.borderStyle,BorderStyles]}>
+<Animated.View style={[styles.LabelContainer,{marginTop:fadeAnim,backgroundColor:labelBack,}]}><Animated.Text style={{fontSize:fontAnim,
+    }}>{title}</Animated.Text></Animated.View>
+<Animated.View style={{height:resizeAnim}}><TextInput style={{fontSize:fontSize}} 
  ref={(ref) => { focRef = ref; }}
+ value={Value}
+ onChangeText={()=>onChange}
  onBlur={() => { setClicled(false)
 setLabelBack(null)
+onBlur
 Animated.timing(
   fadeAnim,
   {
     toValue: 0,
-    duration: 300,
+    duration: duration,
     useNativeDriver: false,
   }  
 ).start();
@@ -74,7 +77,7 @@ Animated.timing(
   resizeAnim,
   {
     toValue: 0,
-    duration: 300,
+    duration: duration,
     useNativeDriver: false,
   }
 ).start();
@@ -82,7 +85,7 @@ Animated.timing(
   fontAnim,
   {
     toValue: 23,
-    duration: 300,
+    duration: duration,
     useNativeDriver: false,
   }
 ).start();
@@ -91,3 +94,10 @@ Animated.timing(
 </View></TouchableWithoutFeedback>
     </View>)
 }
+
+const styles=StyleSheet.create({
+LabelContainer:{
+  alignSelf:'baseline',marginLeft:15,},
+  MainContainer:{height:60}
+  ,borderStyle:{borderWidth:1,height:'100%',width:'100%',borderRadius:4,justifyContent:'center'}
+})
