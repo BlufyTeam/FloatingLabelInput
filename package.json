@@ -1,0 +1,23 @@
+{
+  "name": "floating-label-input",
+  "version": "1.0.0",
+  "description": "floatinglabelinput for react native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlufyTeam/FloatingLabelInput.git"
+  },
+  "keywords": [
+    "floatinglabelinput",
+    "reactnative"
+  ],
+  "author": "blufy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlufyTeam/FloatingLabelInput/issues"
+  },
+  "homepage": "https://github.com/BlufyTeam/FloatingLabelInput#readme"
+}
