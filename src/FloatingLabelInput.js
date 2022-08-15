@@ -2,12 +2,11 @@ import React ,{ useRef, useEffect ,useState,createRef}from 'react';
 import {View,StyleSheet,TextInput,Text,Animated,TouchableWithoutFeedback} from 'react-native';
 
 
-
 export const FloatingLabelInput=({backgroundColor,duration=300,width=250,title='title',ContainerStyle
-,onBlur,onChange,Value,fontSize=18,BorderStyles,direction='ltr'})=>{
+,onBlur,onChange,Value,fontSize=18,BorderStyles,direction='ltr',textStyle})=>{
     const fadeAnim = useRef(new Animated.Value(0)).current
     const resizeAnim = useRef(new Animated.Value(0)).current
-    const fontAnim = useRef(new Animated.Value(23)).current
+    const fontAnim = useRef(new Animated.Value(20)).current
     const [clicked,setClicled]=useState(false)
     const[labelBack,setLabelBack]=useState(null)
     const[align,setalign]=useState(null)
@@ -69,9 +68,9 @@ if(clicked){
 
     return(<View style={[styles.MainContainer,ContainerStyle,{width:width,backgroundColor:backgroundColor}]}>
         <TouchableWithoutFeedback onPress={()=>{setClicled(true); focRef.focus()}}><View style={[styles.borderStyle,BorderStyles,{alignItems:align}]}>
-          <View style={{alignItems:'flex-end',width:'100%'}}><Animated.View style={[{marginTop:fadeAnim,backgroundColor:labelBack,alignSelf:align,marginLeft:leftMargin,marginRight:rightMargin}]}><Animated.Text style={{fontSize:fontAnim,
-    }}>{title}</Animated.Text></Animated.View></View>
-<Animated.View style={{height:resizeAnim}}><TextInput style={{fontSize:fontSize}} 
+          <View style={{alignItems:'flex-end',width:'100%'}}><Animated.View style={[{marginTop:fadeAnim,backgroundColor:labelBack,alignSelf:align,marginLeft:leftMargin,marginRight:rightMargin}]}><Animated.Text style={[{fontSize:fontAnim,
+    },textStyle]}>{title}</Animated.Text></Animated.View></View>
+<Animated.View style={{height:resizeAnim}}><TextInput style={[{fontSize:fontSize},textStyle]} 
  ref={(ref) => { focRef = ref; }}
  value={Value}
  onChangeText={()=>onChange}
@@ -111,6 +110,6 @@ Animated.timing(
 const styles=StyleSheet.create({
 LabelContainer:{
  },
-  MainContainer:{height:60}
+  MainContainer:{height:50}
   ,borderStyle:{borderWidth:1,height:'100%',width:'100%',borderRadius:4,justifyContent:'center',}
 })
