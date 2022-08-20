@@ -15,7 +15,7 @@ npm i floating-label-input-blufy
 ## Usage
 
 ```javascript
-import {FloatingLabelInput} from 'floating-label-input-blufy'
+import { FloatingLabelInput } from 'floating-label-input-blufy'
 
 const app=()=>{
 
