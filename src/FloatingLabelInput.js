@@ -3,7 +3,7 @@ import {View,StyleSheet,TextInput,Text,Animated,TouchableWithoutFeedback} from '
 
 
 export const FloatingLabelInput=({backgroundColor,duration=300,width=250,title='title',ContainerStyle
-,onBlur,onChange,Value,fontSize=18,BorderStyles,direction='ltr',font})=>{
+,onBlur,onChange,Value,fontSize=18,BorderStyles,direction='ltr',font,isPassword=false})=>{
     const fadeAnim = useRef(new Animated.Value(0)).current
     const resizeAnim = useRef(new Animated.Value(0)).current
     const fontAnim = useRef(new Animated.Value(20)).current
@@ -108,6 +108,7 @@ Animated.timing(
   }
 ).start();}
 } }
+secureTextEntry={isPassword}
  ></TextInput></Animated.View>
 </View></TouchableWithoutFeedback>
     </View>)
