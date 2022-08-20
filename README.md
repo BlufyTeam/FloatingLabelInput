@@ -44,7 +44,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 | fontSize        | Number        | 18          | hint and textinput font size                |
 | direction       | 'ltr' | 'rtl' | 'ltr'       | direction of component                      |
 | font            | Font          | undefined   | fontFamily of Component                     |
+<<<<<<< HEAD
 | isPassword      | bool          | false       | change input type to password               |
+=======
+
+>>>>>>> 136d6568e8779e034aae22ed5f1d834831f0c02c
 
 
 ## License
