@@ -15,16 +15,17 @@ npm i floating-label-input-blufy
 ## Usage
 
 ```javascript
-import {FloatingLabelInput} from 'floating-label-input-blufy'
+import { FloatingLabelInput } from 'floating-label-input-blufy'
 
 const app=()=>{
 
-return(<View>
+return(
+<View>
  <FloatingLabelInput 
  fontSize={20} backgroundColor={Colors.Primary} 
-direction={'ltr'} title={'Username'}
-ContainerStyle={{marginTop:50}}>
-</FloatingLabelInput>
+ direction={'ltr'} title={'Username'}
+ ContainerStyle={{marginTop:50}}>
+ </FloatingLabelInput>
 </View>);
 }
 export default app;
